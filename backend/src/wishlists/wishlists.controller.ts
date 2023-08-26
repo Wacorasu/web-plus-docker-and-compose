@@ -11,11 +11,11 @@ import {
 } from '@nestjs/common';
 import { JwtGuard } from 'src/guards/jwt.guard';
 import { User } from '../users/entity/user.entity';
-import { ParamDto } from 'src/users/dto/param.dto';
 import { CreateWishListDto } from './dto/whishlist-create.dto';
 import { WishlistsService } from './wishlists.service';
 import { Wishlist } from './entity/wishlist.entity';
 import { UpdateWishListDto } from './dto/wishlist-update.dto';
+import { ParamWishDto } from 'src/wishes/dto/paramWish.dto';
 
 @Controller('wishlists')
 export class WishlistsController {
@@ -43,7 +43,7 @@ export class WishlistsController {
 
   @UseGuards(JwtGuard)
   @Get(':id')
-  async getWishById(@Param() param: ParamDto): Promise<Wishlist> {
+  async getWishById(@Param() param: ParamWishDto): Promise<Wishlist> {
     const wishList = await this.wishListService.findById(param.id);
     return wishList;
   }
@@ -53,7 +53,7 @@ export class WishlistsController {
   async updateWish(
     @Req() req: { user: User },
     @Body() updateWishListDto: UpdateWishListDto,
-    @Param() param: ParamDto,
+    @Param() param: ParamWishDto,
   ) {
     const wishlist = await this.wishListService.updateWishList(
       req.user,
@@ -68,7 +68,7 @@ export class WishlistsController {
   @Delete(':id')
   async deleteWish(
     @Req() req: { user: User },
-    @Param() param: ParamDto,
+    @Param() param: ParamWishDto,
   ): Promise<Wishlist> {
     const removedWishList = await this.wishListService.deleteWishList(
       param.id,
