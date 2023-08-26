@@ -14,7 +14,7 @@ export class Offer extends PrimaryBaseModel {
   @Length(0, 250)
   username: string;
 
-  @ManyToOne(() => Wish, (wish) => wish.offers, { cascade: true })
+  @ManyToOne(() => Wish, (wish) => wish.offers, { onDelete: 'CASCADE' })
   item: Wish;
 
   @Column({ nullable: false, type: 'decimal', precision: 10, scale: 2 })
