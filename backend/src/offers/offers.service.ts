@@ -40,6 +40,7 @@ export class OffersService {
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
+      console.log(wish.name, wish.raised, createOfferDto.amount);
       await this.offerRepository.save(offer);
       await this.wishesService.updatePrivateParamWish(wish, {
         raised: Number(wish.raised) + createOfferDto.amount,
@@ -47,6 +48,7 @@ export class OffersService {
       });
       await queryRunner.commitTransaction();
     } catch (err) {
+      console.log(err);
       await queryRunner.rollbackTransaction();
     } finally {
       await queryRunner.release();
