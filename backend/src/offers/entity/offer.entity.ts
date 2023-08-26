@@ -17,7 +17,7 @@ export class Offer extends PrimaryBaseModel {
   @ManyToOne(() => Wish, (wish) => wish.offers)
   item: Wish;
 
-  @Column({ nullable: false, type: 'decimal', precision: 5, scale: 2 })
+  @Column({ nullable: false, type: 'decimal', precision: 10, scale: 2 })
   amount: number;
 
   @Column({ default: OFFER_HIDDEN_DEFAULT })
