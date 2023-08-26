@@ -13,7 +13,7 @@ export class AuthService {
   ) {}
 
   auth(user: User): AuthJwtDto {
-    const payload = { sub: user.id };
+    const payload = { sub: user.username };
     return {
       access_token: this.jwtService.sign(`${payload.sub}`),
       expiresIn: '3d',
