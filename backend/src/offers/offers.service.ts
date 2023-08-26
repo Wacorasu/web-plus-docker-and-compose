@@ -34,7 +34,7 @@ export class OffersService {
       createdAt: date,
       updatedAt: date,
       user: user,
-      username: user.username,
+      username: user?.username,
       item: wish,
     });
     await queryRunner.connect();

@@ -11,7 +11,7 @@ export class Offer extends PrimaryBaseModel {
   user: User;
 
   @Column()
-  @Length(1, 250)
+  @Length(0, 250)
   username: string;
 
   @ManyToOne(() => Wish, (wish) => wish.offers)
