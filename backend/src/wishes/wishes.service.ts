@@ -35,7 +35,6 @@ export class WishesService {
   }
 
   async findWishes(user: User): Promise<Wish[]> {
-    console.log(user);
     const wishes = await this.wishesRepository.find({
       relations: {
         wishList: true,

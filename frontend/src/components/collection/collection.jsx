@@ -29,7 +29,7 @@ export const Collection = ({ extraClass = "" }) => {
           {data.name}
         </h2>
         <div className={styles.cards_box}>
-          {data.items?.map((card) => {
+          {data.itemsId?.map((card) => {
             return (
               <GoodCard
                 id={card.id}
