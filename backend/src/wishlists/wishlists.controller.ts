@@ -17,7 +17,7 @@ import { Wishlist } from './entity/wishlist.entity';
 import { UpdateWishListDto } from './dto/wishlist-update.dto';
 import { ParamWishDto } from 'src/wishes/dto/paramWish.dto';
 
-@Controller('wishlists')
+@Controller('wishlistlists')
 export class WishlistsController {
   constructor(private wishListService: WishlistsService) {}
 
