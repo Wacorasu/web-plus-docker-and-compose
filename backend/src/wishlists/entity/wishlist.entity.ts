@@ -10,8 +10,8 @@ export class Wishlist extends PrimaryBaseModel {
   @Length(1, 250)
   name: string;
 
-  @Column({ nullable: false })
-  @Length(1, 1500)
+  @Column()
+  @Length(0, 1500)
   description: string;
 
   @Column()
