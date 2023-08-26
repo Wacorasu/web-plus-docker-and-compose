@@ -38,14 +38,20 @@ export class OffersService {
       username: user?.username,
       item: wish,
     });
-
-    console.log(wish.name, wish.raised, createOfferDto.amount);
-    await this.offerRepository.save(offer);
-    await this.wishesService.updatePrivateParamWish(wish, {
-      raised: Number(wish.raised) + createOfferDto.amount,
-      copied: Number(wish.copied),
-    });
-
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      await this.offerRepository.save(offer);
+      await this.wishesService.updatePrivateParamWish(wish, {
+        raised: Number(wish.raised) + createOfferDto.amount,
+        copied: Number(wish.copied),
+      });
+      await queryRunner.commitTransaction();
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
     return {};
   }
 
