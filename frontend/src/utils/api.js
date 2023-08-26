@@ -173,7 +173,7 @@ export const removeCard = (id) => {
 };
 
 export const addCollection = (data) => {
-  return fetch(`${URL}/wishlists`, {
+  return fetch(`${URL}/wishlistlists`, {
     method: "POST",
     headers: headersWithAuthorizeFn(),
     body: JSON.stringify(data),
@@ -181,21 +181,21 @@ export const addCollection = (data) => {
 };
 
 export const getCollections = () => {
-  return fetch(`${URL}/wishlists`, {
+  return fetch(`${URL}/wishlistlists`, {
     method: "GET",
     headers: headersWithAuthorizeFn(),
   }).then(checkResponse);
 };
 
 export const getCollection = (id) => {
-  return fetch(`${URL}/wishlists/${id}`, {
+  return fetch(`${URL}/wishlistlists/${id}`, {
     method: "GET",
     headers: headersWithAuthorizeFn(),
   }).then(checkResponse);
 };
 
 export const deleteCollection = (id) => {
-  return fetch(`${URL}/wishlists/${id}`, {
+  return fetch(`${URL}/wishlistlists/${id}`, {
     method: "DELETE",
     headers: headersWithAuthorizeFn(),
   }).then(checkResponse);
