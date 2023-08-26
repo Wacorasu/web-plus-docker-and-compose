@@ -21,7 +21,7 @@ export const UserSupportedCard = ({
           Имя
         </p>
         <NavLink
-          to={`${URL}/users/${name}`}
+          to={`/users/${name}`}
           className={`text text_type_main text_color_primary ${styles.link}`}
         >
           {`${name} ${"\u{2197}"}`}
