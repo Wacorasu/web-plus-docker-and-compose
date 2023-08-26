@@ -30,7 +30,8 @@ export class OffersService {
     }
     const date = new Date();
     const offer = this.offerRepository.create({
-      ...createOfferDto,
+      amount: createOfferDto.amount,
+      hidden: createOfferDto.hidden,
       createdAt: date,
       updatedAt: date,
       user: user,
