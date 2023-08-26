@@ -49,8 +49,8 @@ export class WishesController {
   @Get(':id')
   async getWishById(@Param() param: ParamDto): Promise<Wish> {
     const id = Number(param.id);
-    const user = await this.wishesService.findById(id);
-    return user;
+    const wish = await this.wishesService.findById(id);
+    return wish;
   }
 
   @UseGuards(JwtGuard)

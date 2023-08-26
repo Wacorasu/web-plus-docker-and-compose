@@ -35,6 +35,7 @@ export class WishesService {
   }
 
   async findWishes(user: User): Promise<Wish[]> {
+    console.log(user);
     const wishes = await this.wishesRepository.find({
       relations: {
         wishList: true,
@@ -46,9 +47,6 @@ export class WishesService {
       },
       where: {
         owner: user,
-        offers: {
-          hidden: false,
-        },
       },
       take: 40,
     });
@@ -73,7 +71,7 @@ export class WishesService {
   }
 
   async findById(id: number): Promise<Wish> {
-    const user = await this.wishesRepository.findOne({
+    const wish = await this.wishesRepository.findOne({
       relations: {
         wishList: true,
         offers: true,
@@ -84,15 +82,12 @@ export class WishesService {
       },
       where: {
         id: id,
-        offers: {
-          hidden: false,
-        },
       },
     });
-    if (!user) {
+    if (!wish) {
       throw new NotFoundException();
     }
-    return user;
+    return wish;
   }
 
   async createWish(createWishDto: CreateWishDto, user: User) {
