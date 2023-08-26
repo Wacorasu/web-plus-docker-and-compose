@@ -17,11 +17,11 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  async findById(id: number): Promise<User> {
+  async findById(id: string): Promise<User> {
     const user = await this.usersRepository.findOne({
       select: selectUserDataDefault,
       where: {
-        id: id,
+        username: id,
       },
       relations: {
         wishes: true,

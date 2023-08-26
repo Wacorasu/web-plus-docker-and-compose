@@ -14,10 +14,10 @@ import { User } from '../users/entity/user.entity';
 import { CreateWishDto } from './dto/wish-create.dto';
 import { WishesService } from './wishes.service';
 import { Wish } from './entity/wish.entity';
-import { ParamDto } from 'src/users/dto/param.dto';
 import { SORTING_TYPE } from 'src/utils/constants';
 import { DeleteResult } from 'typeorm';
 import { UpdateWishDto } from './dto/wish-update.dto';
+import { ParamWishDto } from './dto/paramWish.dto';
 
 @Controller('wishes')
 export class WishesController {
@@ -47,7 +47,7 @@ export class WishesController {
 
   @UseGuards(JwtGuard)
   @Get(':id')
-  async getWishById(@Param() param: ParamDto): Promise<Wish> {
+  async getWishById(@Param() param: ParamWishDto): Promise<Wish> {
     const id = Number(param.id);
     const wish = await this.wishesService.findById(id);
     return wish;
@@ -58,7 +58,7 @@ export class WishesController {
   async updateWish(
     @Req() req: { user: User },
     @Body() updateWish: UpdateWishDto,
-    @Param() param: ParamDto,
+    @Param() param: ParamWishDto,
   ) {
     await this.wishesService.updateWish(req.user, param.id, updateWish);
   }
@@ -67,7 +67,7 @@ export class WishesController {
   @Delete(':id')
   async deleteWish(
     @Req() req: { user: User },
-    @Param() param: ParamDto,
+    @Param() param: ParamWishDto,
   ): Promise<DeleteResult> {
     const deletedWish = await this.wishesService.deleteWish(param.id, req.user);
     return deletedWish;
@@ -77,7 +77,7 @@ export class WishesController {
   @Post(':id/copy')
   async copyWish(
     @Req() req: { user: User },
-    @Param() param: ParamDto,
+    @Param() param: ParamWishDto,
   ): Promise<Wish> {
     const copyWish = await this.wishesService.copyWish(param.id, req.user);
     return copyWish;

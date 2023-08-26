@@ -1,6 +1,6 @@
 import { IsNumberString } from 'class-validator';
 
-export class ParamDto {
+export class ParamWishDto {
   @IsNumberString()
-  id: string;
+  id: number;
 }
