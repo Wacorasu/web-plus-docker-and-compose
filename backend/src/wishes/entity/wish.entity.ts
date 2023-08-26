@@ -32,7 +32,7 @@ export class Wish extends PrimaryBaseModel {
   @Column({
     nullable: false,
     type: 'decimal',
-    precision: 5,
+    precision: 10,
     scale: 2,
     default: 0,
   })
