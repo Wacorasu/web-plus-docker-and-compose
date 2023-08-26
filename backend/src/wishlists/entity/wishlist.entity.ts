@@ -19,7 +19,7 @@ export class Wishlist extends PrimaryBaseModel {
   @IsUrl()
   image: string;
 
-  @ManyToMany(() => Wish, (wish) => wish.wishList)
+  @ManyToMany(() => Wish, (wish) => wish.wishList, { onDelete: 'CASCADE' })
   @JoinTable()
   itemsId: Wish[];
 
