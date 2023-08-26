@@ -12,7 +12,7 @@ export class CreateWishListDto {
   itemsId: number[];
 
   @IsString()
-  @Length(1, 1500)
+  @Length(0, 1500)
   @IsOptional()
   description: string;
 }
