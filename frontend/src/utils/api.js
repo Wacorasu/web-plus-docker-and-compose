@@ -173,7 +173,7 @@ export const removeCard = (id) => {
 };
 
 export const addCollection = (data) => {
-  return fetch(`${URL}/wishlistlists`, {
+  return fetch(`${URL}/wishlists`, {
     method: "POST",
     headers: headersWithAuthorizeFn(),
     body: JSON.stringify(data),
