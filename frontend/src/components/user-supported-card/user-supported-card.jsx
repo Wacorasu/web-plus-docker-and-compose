@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import styles from "./user-supported-card.module.css";
+import { URL } from "../../utils/constants";
 
 export const UserSupportedCard = ({
   name = "",
