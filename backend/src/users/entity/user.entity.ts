@@ -27,7 +27,7 @@ export class User extends PrimaryBaseModel {
   @Column({ nullable: false })
   password: string;
 
-  @OneToMany(() => Wish, (wish) => wish.owner, { onDelete: 'CASCADE' })
+  @OneToMany(() => Wish, (wish) => wish.owner)
   @JoinColumn()
   wishes: Wish[];
 
